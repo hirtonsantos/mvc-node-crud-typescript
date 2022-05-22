@@ -1,18 +1,15 @@
 import { Request, Response } from "express";
-import userUpdatePasswordService from "../services/userUpdatePassword.service";
+import userUpdateService from "../services/userUpdatePassword.service";
 
-const userUpdatePasswordController = async (req: Request, res: Response) => {
+const userUpdateController = async (req: Request, res: Response) => {
   try {
-    const email = req.userEmail;
-    const { password } = req.body;
 
-    if (!password) {
-      throw new Error("No password informed");
-    }
+    const id = req.params.id
+    const userUpdated = req.body
 
-    const user = await userUpdatePasswordService(email, password);
+	  await userUpdateService(id, userUpdated);
 
-    return res.status(201).json({ message: "Password updated!" });
+    return res.status(201).json({ message: "User updated!" });
   } catch (error) {
     if (error instanceof Error) {
       return res.status(401).send({
@@ -23,4 +20,4 @@ const userUpdatePasswordController = async (req: Request, res: Response) => {
   }
 };
 
-export default userUpdatePasswordController
+export default userUpdateController

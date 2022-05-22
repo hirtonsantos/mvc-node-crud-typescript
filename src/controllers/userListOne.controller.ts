@@ -3,9 +3,10 @@ import userListOneService from "../services/userListOne.service";
 
 const userListOneController = async (req: Request, res: Response) => {
   try {
-    const email = req.userEmail;
+    
+    const id = req.params.id;
 
-    const user = await userListOneService(email);
+    const user = await userListOneService(id);
 
     return res.status(200).send(user);
   } catch (error) {
