@@ -1,6 +1,6 @@
-import { AppDataSource } from "../data-source";
-import { User } from "../entities/user.entity";
-import { IUserUpdate } from "../interfaces/user";
+import { AppDataSource } from "../../data-source";
+import { User } from "../../entities/user.entity";
+import { IUserUpdate } from "../../interfaces/user";
 
 const userUpdateService = async (id: string, data: IUserUpdate) => {
 
