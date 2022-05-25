@@ -32,3 +32,8 @@ export interface IRequest extends Request {
   newUser: IUserCreate;
   updatedUser: IUserUpdate;
 }
+
+export interface IUserLogin{
+  email: string
+  password: string
+}

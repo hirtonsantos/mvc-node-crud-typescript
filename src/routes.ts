@@ -5,7 +5,6 @@ import userListController from "./controllers/userList.controller";
 import userListOneController from "./controllers/userListOne.controller";
 import userUpdateController from "./controllers/userUpdatePassword.controller";
 
-
 const routes = Router();
 
 routes.post("/users", userCreateController);

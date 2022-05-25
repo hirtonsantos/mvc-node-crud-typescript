@@ -2,6 +2,7 @@ import { AppDataSource } from "../data-source";
 import { IUserCreate, } from "../interfaces/user";
 import { User } from "../entities/user.entity";
 import bcrypt from "bcrypt"
+import { AppError } from "../errors/appError";
 
 const userCreateService = async ({name, email, password, age}: IUserCreate) => {
 
@@ -12,7 +13,7 @@ const userCreateService = async ({name, email, password, age}: IUserCreate) => {
     const emailAlreadyExist = users.find(item => item.email === email)
 
     if (emailAlreadyExist){
-        throw new Error("Email already exists")
+        throw new AppError(409,"Email already exists")
     }
 
     const user: IUserCreate = new User()
