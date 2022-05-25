@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Cart } from "./cart.entity";
 
 @Entity()
 export class User {
@@ -23,6 +24,11 @@ export class User {
 
   @UpdateDateColumn()
   updated_at?: Date;
+
+  @OneToOne((type) => Cart, {
+    eager: true
+  })@JoinColumn()
+  cart: Cart
 
   constructor() {
     if (!this.id) {
